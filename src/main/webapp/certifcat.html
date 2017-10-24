@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Certificat</title>
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="row">
+<div class="col-md-8 col-md-offset-2">	
+<form id="form" method="post" action="http://localhost:8080/adminproject/services/demandeurservices/adddemandeur" enctype="multipart/form-data">
+	
+	<div class="panel panel-primary">
+		
+	  <div class="panel-heading">Les information de la demande</div>
+	  <div class="panel-body">
+			   			
+		  
+				  
+				  <div class="form-group">
+				  <div class="radio">
+					  <label>
+					    <input type="radio" class="morale" name="morale" id="morale" value="true">
+					    Personne morale
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" class="physique" name="morale" id="morale" value="false" checked>
+					    Personne physique
+					  </label>
+					</div>
+				  
+				  <div class="form-group " id="physiquen">
+				    <label for="nom">NOM et PRÉNOM </label>
+				    <input type="text" class="form-control" value="test" name="nom" id="nom" placeholder="NOM et PRÉNOM">
+				  </div>
+				  <div class="form-group moralen" id="moralen">
+				    <label for="nom">RAISON SOCIALE  </label>
+				    <input type="text" class="form-control" value="test" name="nom" id="nom" placeholder="RAISON SOCIALE ">
+				  </div>
+				   
+				   <div class="form-group">
+					 <select class="form-control" id="sexe">
+					  <option value="m">M</option>
+					  <option value="f">F</option>
+					</select>
+				 </div>
+				 <div class="form-group">
+				    <label for="nom">NOM D’USAGE (facultatif) : nom d’époux (se)</label>
+				    <input type="text" class="form-control" value="test" name="nomdepoux" id="nomdepoux" placeholder="NOM D’USAGE (facultatif) : nom d’époux (se)">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">N° SIREN, le cas échéant</label>
+				    <input type="text" class="form-control" value="test" name="siren" id="siren" placeholder="N° SIREN, le cas échéant">
+				  </div>
+				  <div class="form-group" id="datenec">
+				    <label for="nom">Né(e)</label>
+				    <input type="text" class="form-control" value="test" name="datene" id="datene" placeholder="Né(e)">
+				  </div>
+				  <div class="form-group" id="addnec" >
+				    <label for="nom">à</label>
+				    <input type="text" class="form-control" value="test" name="addne" id="addne" placeholder="Address">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Département</label>
+				    <input type="text" class="form-control" value="test" name="departemet" id="departemet" placeholder="Departement">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Pays</label>
+				    <input type="text" class="form-control" value="test" name="pays" id="pays" placeholder="Pays">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Dans le cas de multi-propriété, veuillez indiquer le nombre de personnes titulaires du certificat d’immatriculation</label>
+				    <input type="text" class="form-control" value="1" name="numberpersotitulai" id="numberpersotitulai" placeholder="">
+				  </div>
+				  
+				  
+				   <div class="form-group">
+				   <label for="nom">Véhicule en location courte durée</label>
+				 	<div class="radio">
+					  <label>
+					    <input type="radio" name="locationcourte" id="locationcourte" value="false" aria-label="Morale">
+					  </label>
+					</div>
+				 </div>
+				  <div class="form-group">
+				   <label for="nom">Véhicule en location longue durée</label>
+				 	<div class="radio">
+					  <label>
+					    <input type="radio"name="locationlongue" id="locationlongue" value="false" aria-label="Morale">
+					  </label>
+					</div>
+				 </div>
+				  
+				  
+				  <div class="form-group">
+				    <label for="nom">RAISON SOCIALE DE LA SOCIÉTÉ DE LOCATION, si différente du titulaire</label>
+				    <input type="text" value="test" class="form-control" name="RSSL" id="RSSL" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">N° SIREN</label>
+				    <input type="text" value="test" class="form-control" name="SRSSL" id="SRSSL" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">NOM et PRÉNOM ou RAISON SOCIALE DU LOCATAIRE</label>
+				    <input type="text" value="test" class="form-control" name="nomlocataire" id="nomlocataire" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">N° SIREN, le cas échéant</label>
+				    <input type="text" value="test" class="form-control" name="snomlocataire" id="snomlocataire" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">N° de la voie</label>
+				    <input type="text" value="2" class="form-control" name="nvd" id="nvd" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Extension (bis, ter, .)</label>
+				    <input type="text" value="test" class="form-control" name="extensiond" id="extensiond" placeholder="">
+				  </div>
+				 <div class="form-group">
+				    <label for="nom">Type de voie (avenue, etc.)</label>
+				    <input type="text" value="" class="form-control" name="typevd" id="typevd" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Nom de la voie</label>
+				    <input type="text" value="test" class="form-control" name="nomv" id="nomv" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Complément d’adresse (Etage, escalier, appartement - Immeuble, bâtiment, résidence - Lieu-dit - Boîte postale)</label>
+				    <input type="text" value="test" class="form-control" name="adressed" id="adressed" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Code postal</label>
+				    <input type="text" value="test" class="form-control" name="codepostald" id="codepostald" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Commune</label>
+				    <input type="text" value="test" class="form-control" name="communed" id="communed" placeholder="">
+				  </div>
+				  
+	
+	  </div>
+	  <div class="panel-footer"> <button id="btn_valider" class="btn btn-primary ajout" type="button">Submit</button></div>
+	  
+	</div>
+</form>	
+</div>	
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+	
+	
+	//$('#physiquen').hide();
+	$('#moralen').hide();
+	
+	
+    $('.morale').click(function () {
+        if ($(this).is(':checked')) {
+        	$('#moralen').show();
+        	$('#physiquen').hide();
+            $('#sexe').hide();
+            $('#datenec').hide();
+            $('#addnec').hide();
+        }
+        
+    });
+    $('.physique').click(function () {
+        if ($(this).is(':checked')) {
+        	$('#moralen').hide();
+        	$('#physiquen').show();
+        	$('#addnec').show();
+            $('#datenec').show();
+            $('#sexe').show();
+        }
+    });
+    
+});
+
+</script>
+
+
+<script>
+
+$("#btn_valider").click(function(){
+
+	
+
+	 var nom = $('#nom').val();
+	 var sexe = $('#sexe').val();
+	 var morale = $('#morale').val(); 
+	 var nomdepoux = $('#nomdepoux').val();
+	 var siren = $('#siren').val();
+	 var datene = $('#datene').val();
+	 var addne = $('#addne').val();
+	 var departemet = $('#departemet').val();
+	 var pays = $('#pays').val();
+	 var numberpersotitulai = $('#numberpersotitulai').val();
+	 var locationcourte = $('#locationcourte').val();
+	 var locationlongue = $('#locationlongue').val();
+	 var RSSL = $('#RSSL').val();
+	 var SRSSL = $('#SRSSL').val();
+	 var nomlocataire = $('#nomlocataire').val();
+	 var snomlocataire = $('#snomlocataire').val();
+	 var nvd = $('#nvd').val();
+	 var extensiond = $('#extensiond').val();
+	 var typevd = $('#typevd').val();
+	 var nomv = $('#nomv').val();
+	 var adressed = $('#adressed').val();
+	 var codepostald = $('#codepostald').val();
+	 var communed = $('#communed').val();
+	 
+	var data = {"nom": nom,"sexe":sexe,"morale":morale, "nomdepoux":nomdepoux,"siren":siren,"datene":datene,"addne":addne,"departemet":departemet,"pays":pays,"numberpersotitulai":numberpersotitulai,"locationcourte":locationcourte,"locationlongue":locationcourte,"rssl":RSSL,"srssl":SRSSL,"nomlocataire":nomlocataire,"snomlocataire":snomlocataire,"nvd":nvd,"extensiond":extensiond,"typevd":typevd,"nomv":nomv,"adressed":adressed,"codepostald":codepostald,"communed":communed};
+	 
+
+	
+	$.ajax({
+        url: "http://localhost:8080/adminproject/services/demandeurservices/adddemandeur",
+        dataType: "json",
+        type: "POST",
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(data),
+        async: true,
+        processData: false,
+        cache: false,
+        success: function (r) {
+            if (r.d !="" ) {
+                alert('Enregistrement enregistré avec succès clic sur ok pour terminer les information de la vehicule');
+                window.location.href = "vehicule.html?id="+r;
+            }
+        },
+        error: function (xhr) {
+            alert('Error..!!');
+            
+        }
+    });
+
+	
+	
+	
+	});
+
+
+</script>
+</html>

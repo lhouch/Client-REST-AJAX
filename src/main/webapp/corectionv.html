@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Client</title>
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="row">
+<div class="col-md-8 col-md-offset-2">	
+<form id="form" method="post" action="http://localhost:8080/adminproject/services/vehiculeservice/addvehicule" enctype="multipart/form-data">
+	<input type="hidden" value="Corection Vehicule" name="typevd" id="typevd">
+	<input type="hidden" value="" name="idv" id="idv">
+	<div class="panel panel-primary">
+		
+	  <div class="panel-heading">
+	  <form class="form-inline">
+	  
+	  <div class="form-group">
+	     <label class="">Matriculation</label>
+	    <input type="text" value="AA-0-AC" class="form-control" id="matric" name="matric"">
+	  </div>
+	  <button type="button" id="btn_cher" class="btn btn-default">Valide</button>
+	</form>
+	  
+	  </div>
+	  <div class="panel-body">
+		  
+		  
+				  
+				  
+				  
+				 <div class="form-group">
+				    <label for="nom">Date d’achat, le cas échéant</label>
+				    <input type="text" class="form-control" value="" name="dateachat" id="dateachat" placeholder="">
+				  </div>
+				
+				  
+				  <div class="form-group">
+				    <label for="nom">Numéro de formule du certificat d’immatriculation</label>
+				    <input type="text" class="form-control" value="" name="numeroformulec" id="numeroformulec" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Type variante version (D.2)</label>
+				    <input type="text" class="form-control" value="SmN" name="typev" id="typev" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Dénomination commerciale (D.3)</label>
+				    <input type="text" class="form-control" value="" name="denominationc" id="denominationc" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Numéro d’identification du véhicule (E)</label>
+				    <input type="text" class="form-control" value="" name="numeroidv" id="numeroidv" placeholder="">
+				  </div>
+				   <div class="form-group">
+				    <label for="nom">Genre national (J.1)</label>
+				    <input type="text" class="form-control" value="" name="genrenational" id="genrenational" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Marque (D.1)</label>
+				    <input type="text" class="form-control" value="" name="marque" id="marque" placeholder="">
+				  </div>
+				   
+				  
+				   <div class="form-group">
+				    <label for="nom">Numéro d’exploitation agricole, le cas échéant</label>
+				    <input type="text" class="form-control" value="" name="numerexp" id="numerexp" placeholder="">
+				
+				  
+				  <div class="form-group">
+				   <label for="nom">COULEUR clair ou Fonce</label>
+				 	<div class="radio">
+					  <label>
+					    <input type="radio" name="couleurclair" id="couleurclair" value="true" aria-label="">
+					  </label>
+					</div>
+				 </div>
+				    </div>
+				   <div class="form-group">
+				    <label for="nom">COULEUR</label>
+				    <input type="text" class="form-control" value="" name="couleur" id="couleur" placeholder="">
+				  </div>
+				  
+				
+	  </div>
+	  <div class="panel-footer"> <button id="btn_valider" class="btn btn-primary ajout" type="button">Submit</button></div>
+	  
+	</div>
+</form>	
+</div>	
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+
+$("#btn_cher").click(function(){
+var data = $('#matric').val();
+	 
+
+	
+	$.ajax({
+        url: "http://localhost:8080/adminproject/services/demandeservices/corectionv",
+        type: "POST",
+        data: data,
+        async: true,
+        processData: false,
+        cache: false,
+        success: function (r) {
+            if (r.d !="" ) {
+            	//alert(r);
+            	 var json = $.parseJSON(r);
+            	 
+            	//alert(r);
+            	$('#numeroma').val(json.numeroma);
+            	$('#dateachat').val(json.dateachat);
+            	$('#datecertificata').val(json.datecertificata);
+            	$('#datepm').val(json.datepm);
+            	$('#numeroformulec').val(json.numeroformulec);
+            	$('#marque').val(json.marque);
+            	$('#denominationc').val(json.denominationc);
+            	$('#numeroidv').val(json.numeroidv);
+            	$('#genrenational').val(json.genrenational);
+            	$('#numerexp').val(json.numerexp);
+            	 $( '#couleurclair' ).prop( "checked", json.couleurclair );
+            	$('#couleur').val(json.couleur);
+            	
+            	$('#typev').val(json.typev);
+            	$('#idv').val(json.id);
+               
+            }
+        },
+        error: function (xhr) {
+            alert('Error..!!');
+            
+        }
+    });
+
+	
+});
+
+
+
+
+</script>
+
+<script>
+$("#btn_valider").click(function(){
+	
+	
+	
+
+	 var numeroma = "";
+	 var dateachat = $('#dateachat').val();
+	 var datecertificata = ""; 
+	 var datepm = "";
+	 var numeroformulec = $('#numeroformulec').val();
+	 var marque = $('#marque').val();
+	 var typev = $('#typev').val();
+	 var denominationc = $('#denominationc').val();
+	 var numeroidv = $('#numeroidv').val();
+	 var genrenational = $('#genrenational').val();
+	 var numerexp = $('#numerexp').val();
+	 var couleurclair = $('#couleurclair').val();
+	 var couleur = $('#couleur').val();
+	 var id = $('#idv').val();
+	 
+	 
+	var data = {"id":id,"numeroma":numeroma,"dateachat":dateachat,"datecertificata":datecertificata, "datepm":datepm,"numeroformulec":numeroformulec,"numeroidv":numeroidv,"marque":marque,"typev":typev,"denominationc":denominationc,"numeroidv":numeroidv,"genrenational":genrenational,"numerexp":numerexp,"couleurclair":couleurclair,"couleur":couleur};
+	 
+	$.ajax({
+        url: "http://localhost:8080/adminproject/services/demandeservices/vehiculeup",
+        dataType: "json",
+        type: "POST",
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(data),
+        async: true,
+        processData: false,
+        cache: false,
+        success: function (r) {
+            if (r.d !="" ) {
+            	 window.location.href = "valide.html";;
+                
+                
+            }
+        },
+        error: function (xhr) {
+            alert('Error..!!');
+            
+        }
+    });
+
+	
+	});
+
+
+</script>
+</html>

@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Certificat</title>
+<link rel="stylesheet" href="static/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="row">
+<div class="col-md-8 col-md-offset-2">	
+<form id="form" method="post" action="http://localhost:8080/adminproject/services/demandeservices/demandeurup" enctype="multipart/form-data">
+	
+	<input type="hidden" value="" name="idd" id="idd">
+	<div class="panel panel-primary">
+		
+	  <div class="panel-heading">
+	  
+	<form class="form-inline">
+	  
+	  <div class="form-group">
+	     <label class="">Matriculation</label>
+	    <input type="text" value="AA-0-AC" class="form-control" id="matric" name="matric"">
+	  </div>
+	  <button type="button" id="btn_cher" class="btn btn-default">Valide</button>
+	</form>
+	  
+	  </div>
+	  <div class="panel-body">
+			   			
+		  
+				
+				  
+				  
+				   
+				 
+				  
+ 
+				
+				  <div class="form-group">
+				    <label for="nom">N° de la voie</label>
+				    <input type="text" value="" class="form-control" name="nvd" id="nvd" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Extension (bis, ter, .)</label>
+				    <input type="text" value="" class="form-control" name="extensiond" id="extensiond" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Type de voie (avenue, etc.)</label>
+				    <input type="text" value="" class="form-control" name="typevd" id="typevd" placeholder="">
+				  </div>
+				 
+				  <div class="form-group">
+				    <label for="nom">Nom de la voie</label>
+				    <input type="text" value="" class="form-control" name="nomv" id="nomv" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Complément d’adresse (Etage, escalier, appartement - Immeuble, bâtiment, résidence - Lieu-dit - Boîte postale)</label>
+				    <input type="text" value="" class="form-control" name="adressed" id="adressed" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Code postal</label>
+				    <input type="text" value="" class="form-control" name="codepostald" id="codepostald" placeholder="">
+				  </div>
+				  <div class="form-group">
+				    <label for="nom">Commune</label>
+				    <input type="text" value="" class="form-control" name="communed" id="communed" placeholder="">
+				  </div>
+				  
+	
+	  </div>
+	  <div class="panel-footer"> <button id="btn_valider" class="btn btn-primary ajout" type="button">Submit</button></div>
+	  
+	</div>
+</form>	
+</div>	
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script>
+
+$("#btn_cher").click(function(){
+var data = $('#matric').val();
+	 
+
+	
+	$.ajax({
+        url: "http://localhost:8080/adminproject/services/demandeservices/corectiond",
+        type: "POST",
+        data: data,
+        async: true,
+        processData: false,
+        cache: false,
+        success: function (r) {
+            if (r.d !="" ) {
+            	//alert(r);
+            	 var json = $.parseJSON(r);
+            	 $('#idd').val(json.id);
+              
+          	  $('#nvd').val(json.nvd);
+          	 $('#extensiond').val(json.extensiond);
+          	$('#typevd').val(json.typevd);
+          	 $('#nomv').val(json.nomv);
+          	 $('#adressed').val(json.adressed);
+             $('#codepostald').val(json.codepostald);
+          	 $('#communed').val(json.communed);
+          
+               
+            }
+        },
+        error: function (xhr) {
+            alert('Error..!!');
+            
+        }
+    });
+
+	
+});
+
+
+</script>
+
+
+<script>
+
+$("#btn_valider").click(function(){
+
+	
+	
+	var id = $('#idd').val();
+	
+	
+
+	 var nvd = $('#nvd').val();
+	 var extensiond = $('#extensiond').val();
+	 var typevd = $('#typevd').val();
+	 var nomv = $('#nomv').val();
+	 var adressed = $('#adressed').val();
+	 var codepostald = $('#codepostald').val();
+	 var communed = $('#communed').val();
+	 
+	var data = {"id":id,"nvd":nvd,"extensiond":extensiond,"typevd":typevd,"nomv":nomv,"adressed":adressed,"codepostald":codepostald,"communed":communed};
+	// alert(data);
+
+	
+	$.ajax({
+        url: "http://localhost:8080/adminproject/services/demandeservices/domicileup",
+        dataType: "json",
+        type: "POST",
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(data),
+        async: true,
+        processData: false,
+        cache: false,
+        success: function (r) {
+            if (r.d !="" ) {
+                //alert('Enregistrement enregistré avec succès ');
+                window.location.href = "valide.html";
+            }
+        },
+        error: function (xhr) {
+            alert('Error..!!');
+            
+        }
+    });
+
+	
+	
+	
+	});
+
+
+</script>
+</html>
